@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otodom", "Otodom\Otodom.csproj", "{003C6862-C058-4FD1-9C6A-A08794E24A8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Otodom", "Otodom\Otodom.csproj", "{003C6862-C058-4FD1-9C6A-A08794E24A8F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Otodom-backend", "Otodom-backend\Otodom-backend.csproj", "{38CBF1D5-22C4-4AE6-9FC8-0AE34F44CF7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiConsumer", "ApiConsumer\ApiConsumer.csproj", "{1751FB69-2CBC-46A7-A69F-C10B2BE005E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +21,14 @@ Global
 		{003C6862-C058-4FD1-9C6A-A08794E24A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{003C6862-C058-4FD1-9C6A-A08794E24A8F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{003C6862-C058-4FD1-9C6A-A08794E24A8F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{38CBF1D5-22C4-4AE6-9FC8-0AE34F44CF7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38CBF1D5-22C4-4AE6-9FC8-0AE34F44CF7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38CBF1D5-22C4-4AE6-9FC8-0AE34F44CF7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38CBF1D5-22C4-4AE6-9FC8-0AE34F44CF7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1751FB69-2CBC-46A7-A69F-C10B2BE005E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1751FB69-2CBC-46A7-A69F-C10B2BE005E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1751FB69-2CBC-46A7-A69F-C10B2BE005E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1751FB69-2CBC-46A7-A69F-C10B2BE005E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

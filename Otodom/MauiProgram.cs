@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using ApiConsumer.IoC;
 
 namespace Otodom
 {
@@ -18,7 +19,7 @@ namespace Otodom
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddApiClientService(x => x.ApiBaseAddress = "http://10.0.2.2:5046/");
             return builder.Build();
         }
     }
