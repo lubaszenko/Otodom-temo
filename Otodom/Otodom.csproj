@@ -66,4 +66,17 @@
 	  <ProjectReference Include="..\ApiConsumer\ApiConsumer.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Models\ViewModels\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="App.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="AppShell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
