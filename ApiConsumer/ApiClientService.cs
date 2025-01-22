@@ -25,5 +25,19 @@ namespace ApiConsumer
         {
             return await _httpClient.GetFromJsonAsync<List<AgencjaResponse>>("/agencjas");
         }
+
+        public async Task<OgloszenieResponse> PostOgloszenieZnieruchomoscia(OgloszenieRequest request)
+        {
+            var response = await _httpClient.PostAsJsonAsync("/ogloszenies", request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<OgloszenieResponse>();
+        }
+
+        public async Task<bool> DeleteOgloszenieAsync(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"/ogloszenies/{id}");
+            response.EnsureSuccessStatusCode();
+            return response.IsSuccessStatusCode;
+        }
     }
 }
