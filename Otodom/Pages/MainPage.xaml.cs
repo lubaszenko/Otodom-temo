@@ -1,9 +1,10 @@
-﻿namespace Otodom
+﻿using Microsoft.Maui.Controls;
+using System.Windows.Input;
+
+namespace Otodom
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
