@@ -1,9 +1,13 @@
-namespace Otodom.Pages;
+using Otodom.ViewModels;
 
-public partial class LoginPage : ContentPage
+namespace Otodom.Pages
 {
-	public LoginPage()
-	{
-		InitializeComponent();
-	}
+    public partial class LoginPage : ContentPage
+    {
+        public LoginPage(LoginViewModel viewModel)
+        {
+            InitializeComponent();
+            BindingContext = viewModel;
+        }
+    }
 }

@@ -1,46 +1,70 @@
 using System;
+using System.ComponentModel;
 using Microsoft.Maui.Controls;
 
 namespace Otodom.Pages
 {
-    public partial class Kredyty : ContentPage
+    public partial class Kredyty : ContentPage, INotifyPropertyChanged
     {
-        public int CenaNieruchomosci { get; set; } = 920000;
-        public int WkladWlasny { get; set; } = 20; // W procentach
-        public int OkresKredytowania { get; set; } = 30; // W latach
-        public decimal OprocentowanieKredytu { get; set; } = 6.85m; // W procentach
-        public decimal KwotaKredytuDoSplaty { get; set; }
-        public decimal RataMiesieczna { get; set; }
-        public decimal CalkowiteOdsetki { get; set; }
+        private int _cenaNieruchomosci = 920000;
+        public int CenaNieruchomosci
+        {
+            get => _cenaNieruchomosci;
+            set
+            {
+                _cenaNieruchomosci = value;
+                OnPropertyChanged();
+                ObliczKredyt();
+            }
+        }
+
+        private int _wkladWlasny = 20;
+        public int WkladWlasny
+        {
+            get => _wkladWlasny;
+            set
+            {
+                _wkladWlasny = value;
+                OnPropertyChanged();
+                ObliczKredyt();
+            }
+        }
+
+        private int _okresKredytowania = 30;
+        public int OkresKredytowania
+        {
+            get => _okresKredytowania;
+            set
+            {
+                _okresKredytowania = value;
+                OnPropertyChanged();
+                ObliczKredyt();
+            }
+        }
+
+        private decimal _oprocentowanieKredytu = 6.85m;
+        public decimal OprocentowanieKredytu
+        {
+            get => _oprocentowanieKredytu;
+            set
+            {
+                _oprocentowanieKredytu = value;
+                OnPropertyChanged();
+                ObliczKredyt();
+            }
+        }
+
+        public decimal KwotaKredytuDoSplaty { get; private set; }
+        public decimal RataMiesieczna { get; private set; }
+        public decimal CalkowiteOdsetki { get; private set; }
+
+        public Command NavigateBackCommand { get; }
 
         public Kredyty()
         {
             InitializeComponent();
+            NavigateBackCommand = new Command(async () => await Shell.Current.GoToAsync("//MainPage"));
             BindingContext = this;
-            ObliczKredyt();
-        }
-
-        private void ZmianaCenyNieruchomosci(object sender, ValueChangedEventArgs e)
-        {
-            CenaNieruchomosci = (int)e.NewValue;
-            ObliczKredyt();
-        }
-
-        private void ZmianaWkladuWlasnego(object sender, ValueChangedEventArgs e)
-        {
-            WkladWlasny = (int)e.NewValue;
-            ObliczKredyt();
-        }
-
-        private void ZmianaOkresuKredytowania(object sender, ValueChangedEventArgs e)
-        {
-            OkresKredytowania = (int)e.NewValue;
-            ObliczKredyt();
-        }
-
-        private void ZmianaOprocentowania(object sender, ValueChangedEventArgs e)
-        {
-            OprocentowanieKredytu = (decimal)e.NewValue;
             ObliczKredyt();
         }
 

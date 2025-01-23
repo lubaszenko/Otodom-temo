@@ -6,12 +6,14 @@
              Title="Householding">
 
     <Grid>
+        <!-- Tło -->
         <Image Source="homepage.jpg"
                Aspect="AspectFill"
                Opacity="1"
                HorizontalOptions="FillAndExpand"
-               VerticalOptions="FillAndExpand"/>
+               VerticalOptions="FillAndExpand" />
 
+        <!-- Nagłówek -->
         <Label Text="Witamy na Householding"
                FontSize="40"
                FontAttributes="Bold"
@@ -20,10 +22,13 @@
                Padding="10"
                HorizontalOptions="Center"
                VerticalOptions="Start"
-               HorizontalTextAlignment="Center"/>
+               HorizontalTextAlignment="Center" />
 
+        <!-- Treść w ScrollView -->
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Spacing="20" Padding="10" Margin="0,140,0,0">
+
+                <!-- Karta 1 -->
                 <Frame BackgroundColor="White"
                        CornerRadius="10"
                        BorderColor="Gray"
@@ -34,19 +39,16 @@
                                FontAttributes="Bold"
                                TextColor="Black"
                                HorizontalOptions="Start" />
-
                         <Label Text="Przestronny apartament o powierzchni 120 m² z widokiem na panoramę miasta. Idealny dla rodziny."
                                FontSize="14"
                                TextColor="Gray"
                                HorizontalOptions="Start"
                                Margin="0,5,0,10" />
-
                         <Label Text="Cena: 1 200 000 PLN"
                                FontSize="18"
                                FontAttributes="Bold"
                                TextColor="DarkGreen"
                                HorizontalOptions="Start" />
-
                         <StackLayout Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
                             <Label Text="Powierzchnia: 120 m²"
                                    FontSize="14"
@@ -58,6 +60,7 @@
                     </StackLayout>
                 </Frame>
 
+                <!-- Karta 2 -->
                 <Frame BackgroundColor="White"
                        CornerRadius="10"
                        BorderColor="Gray"
@@ -68,13 +71,11 @@
                                FontAttributes="Bold"
                                TextColor="Black"
                                HorizontalOptions="Start" />
-
                         <Label Text="Dom jednorodzinny o powierzchni 200 m² z dużym ogrodem i tarasem."
                                FontSize="14"
                                TextColor="Gray"
                                HorizontalOptions="Start"
                                Margin="0,5,0,10" />
-
                         <Label Text="Cena: 950 000 PLN"
                                FontSize="18"
                                FontAttributes="Bold"
@@ -82,9 +83,51 @@
                                HorizontalOptions="Start" />
                     </StackLayout>
                 </Frame>
-                <Button Text="Kalkulator kredytów"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" />
+
+                <!-- Kafelek logowania/rejestracji -->
+                <Frame BackgroundColor="#E3F2FD"
+                       CornerRadius="10"
+                       Padding="15"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <StackLayout Spacing="10" HorizontalOptions="Center">
+                        <Label Text="Zaloguj się lub załóż konto"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               HorizontalOptions="Center" />
+                        <Button Text="Zaloguj się"
+                                Command="{Binding NavigateToLoginCommand}"
+                                BackgroundColor="#2196F3"
+                                TextColor="White"
+                                CornerRadius="5" />
+                        <Button Text="Załóż konto"
+                                Command="{Binding NavigateToRegisterCommand}"
+                                BackgroundColor="#64B5F6"
+                                TextColor="White"
+                                CornerRadius="5" />
+                    </StackLayout>
+                </Frame>
+                <!-- Kafelek do kalkulatora kredytowego -->
+                <Frame BackgroundColor="#FFFDE7"
+                       CornerRadius="10"
+                       Padding="15"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <StackLayout Spacing="10" HorizontalOptions="Center">
+                        <Label Text="Przejdź do kalkulatora kredytowego"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               HorizontalOptions="Center" />
+                        <Button Text="Kalkulator kredytów"
+                                Command="{Binding NavigateToKredytyCommand}"
+                                BackgroundColor="#FFD600"
+                                TextColor="Black"
+                                CornerRadius="5" />
+                    </StackLayout>
+                </Frame>
+
             </StackLayout>
         </ScrollView>
     </Grid>

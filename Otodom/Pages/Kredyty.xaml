@@ -1,71 +1,91 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Otodom.Pages.Kredyty"
              Title="Kredyty">
-    <ScrollView>
-        <VerticalStackLayout Spacing="20" Padding="10">
+    <Grid Padding="10">
+        <!-- Kalkulator kredytowy -->
+        <ScrollView>
+            <VerticalStackLayout Spacing="20" Padding="10">
 
-            <Label Text="Kalkulator kredytu hipotecznego"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
+                <Label Text="Kalkulator kredytu hipotecznego"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
 
-            <VerticalStackLayout Spacing="10">
+                <!-- Cena nieruchomości -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Cena nieruchomości:" />
+                    <Slider Minimum="50000"
+                            Maximum="8000000"
+                            Value="{Binding CenaNieruchomosci, Mode=TwoWay}" />
+                    <Entry Text="{Binding CenaNieruchomosci, Mode=TwoWay}"
+                           Keyboard="Numeric"
+                           HorizontalOptions="FillAndExpand" />
+                    <Label Text="{Binding CenaNieruchomosci, StringFormat='Cena: {0:N0} zł'}"
+                           FontAttributes="Bold" />
+                </VerticalStackLayout>
 
-                <Label Text="Cena nieruchomości:" />
-                <Slider x:Name="CenaNieruchomosciSlider"
-                        Minimum="50000"
-                        Maximum="8000000"
-                        Value="{Binding CenaNieruchomosci, Mode=TwoWay}"
-                        ValueChanged="ZmianaCenyNieruchomosci" />
-                <Label Text="{Binding CenaNieruchomosci, StringFormat='Cena: {0:N0} zł'}"
-                       FontAttributes="Bold" />
+                <!-- Wkład własny -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Wkład własny (%):" />
+                    <Slider Minimum="10"
+                            Maximum="90"
+                            Value="{Binding WkladWlasny, Mode=TwoWay}" />
+                    <Entry Text="{Binding WkladWlasny, Mode=TwoWay}"
+                           Keyboard="Numeric"
+                           HorizontalOptions="FillAndExpand" />
+                    <Label Text="{Binding WkladWlasny, StringFormat='Wkład własny: {0:N0} %'}"
+                           FontAttributes="Bold" />
+                </VerticalStackLayout>
 
-                <Label Text="Wkład własny (%):" />
-                <Slider x:Name="WkladWlasnySlider"
-                        Minimum="10"
-                        Maximum="90"
-                        Value="{Binding WkladWlasny, Mode=TwoWay}"
-                        ValueChanged="ZmianaWkladuWlasnego" />
-                <Label Text="{Binding WkladWlasny, StringFormat='Wkład własny: {0:N0} %'}"
-                       FontAttributes="Bold" />
+                <!-- Okres kredytowania -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Okres kredytowania (lata):" />
+                    <Slider Minimum="5"
+                            Maximum="35"
+                            Value="{Binding OkresKredytowania, Mode=TwoWay}" />
+                    <Entry Text="{Binding OkresKredytowania, Mode=TwoWay}"
+                           Keyboard="Numeric"
+                           HorizontalOptions="FillAndExpand" />
+                    <Label Text="{Binding OkresKredytowania, StringFormat='Okres kredytowania: {0:N0} lat'}"
+                           FontAttributes="Bold" />
+                </VerticalStackLayout>
 
-                <Label Text="Okres kredytowania (lata):" />
-                <Slider x:Name="OkresKredytowaniaSlider"
-                        Minimum="5"
-                        Maximum="35"
-                        Value="{Binding OkresKredytowania, Mode=TwoWay}"
-                        ValueChanged="ZmianaOkresuKredytowania" />
-                <Label Text="{Binding OkresKredytowania, StringFormat='Okres kredytowania: {0:N0} lat'}"
-                       FontAttributes="Bold" />
+                <!-- Oprocentowanie kredytu -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Oprocentowanie kredytu (%):" />
+                    <Slider Minimum="1"
+                            Maximum="20"
+                            Value="{Binding OprocentowanieKredytu, Mode=TwoWay}" />
+                    <Entry Text="{Binding OprocentowanieKredytu, Mode=TwoWay}"
+                           Keyboard="Numeric"
+                           HorizontalOptions="FillAndExpand" />
+                    <Label Text="{Binding OprocentowanieKredytu, StringFormat='Oprocentowanie: {0:N2} %'}"
+                           FontAttributes="Bold" />
+                </VerticalStackLayout>
 
-                <Label Text="Oprocentowanie kredytu (%):" />
-                <Slider x:Name="OprocentowanieKredytuSlider"
-                        Minimum="1"
-                        Maximum="20"
-                        Value="{Binding OprocentowanieKredytu, Mode=TwoWay}"
-                        ValueChanged="ZmianaOprocentowania" />
-                <Label Text="{Binding OprocentowanieKredytu, StringFormat='Oprocentowanie: {0:N2} %'}"
-                       FontAttributes="Bold" />
+                <!-- Wyniki kalkulacji -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Rata miesięczna:" FontAttributes="Bold" />
+                    <Label Text="{Binding RataMiesieczna, StringFormat='{0:N2} zł'}" FontSize="18" />
+
+                    <Label Text="Kwota kredytu do spłaty:" FontAttributes="Bold" />
+                    <Label Text="{Binding KwotaKredytuDoSplaty, StringFormat='{0:N2} zł'}" FontSize="18" />
+
+                    <Label Text="Całkowite odsetki:" FontAttributes="Bold" />
+                    <Label Text="{Binding CalkowiteOdsetki, StringFormat='{0:N2} zł'}" FontSize="18" />
+                </VerticalStackLayout>
             </VerticalStackLayout>
+        </ScrollView>
 
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Rata miesięczna:"
-                       FontAttributes="Bold" />
-                <Label Text="{Binding RataMiesieczna, StringFormat='{0:N2} zł'}"
-                       FontSize="18" />
+        <!-- Przycisk Powrót -->
+        <StackLayout VerticalOptions="End" HorizontalOptions="FillAndExpand" Padding="10">
+            <Button Text="Powrót do strony głównej"
+            Command="{Binding NavigateBackCommand}"
+            BackgroundColor="#64B5F6"
+            TextColor="White"
+            CornerRadius="5" />
+        </StackLayout>
 
-                <Label Text="Kwota kredytu do spłaty:"
-                       FontAttributes="Bold" />
-                <Label Text="{Binding KwotaKredytuDoSplaty, StringFormat='{0:N2} zł'}"
-                       FontSize="18" />
-
-                <Label Text="Całkowite odsetki:"
-                       FontAttributes="Bold" />
-                <Label Text="{Binding CalkowiteOdsetki, StringFormat='{0:N2} zł'}"
-                       FontSize="18" />
-            </VerticalStackLayout>
-        </VerticalStackLayout>
-    </ScrollView>
+    </Grid>
 </ContentPage>

@@ -1,9 +1,13 @@
-namespace Otodom.Pages;
+using Otodom.ViewModels;
 
-public partial class RegisterPage : ContentPage
+namespace Otodom.Pages
 {
-	public RegisterPage()
-	{
-		InitializeComponent();
-	}
+    public partial class RegisterPage : ContentPage
+    {
+        public RegisterPage(RegisterViewModel viewModel)
+        {
+            InitializeComponent();
+            BindingContext = viewModel;
+        }
+    }
 }
