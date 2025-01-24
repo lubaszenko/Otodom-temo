@@ -4,7 +4,7 @@ using Microsoft.Maui.Controls;
 
 namespace Otodom.Pages
 {
-    public partial class Kredyty : ContentPage, INotifyPropertyChanged
+    public partial class Loans : ContentPage, INotifyPropertyChanged
     {
         private int _cenaNieruchomosci = 920000;
         public int CenaNieruchomosci
@@ -60,7 +60,7 @@ namespace Otodom.Pages
 
         public Command NavigateBackCommand { get; }
 
-        public Kredyty()
+        public Loans()
         {
             InitializeComponent();
             NavigateBackCommand = new Command(async () => await Shell.Current.GoToAsync("//MainPage"));

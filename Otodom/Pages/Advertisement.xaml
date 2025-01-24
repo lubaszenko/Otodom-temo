@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Otodom.Models.ViewModels"
+             xmlns:nm="clr-namespace:ApiConsumer.DTO;assembly=ApiConsumer"
+             x:Class="Otodom.Pages.Advertisement"
+             x:DataType="vm:DisplayAdvertisementViewModel"
+             Title="Ogłoszenia">
+    <Grid>
+        <Image Source="homepage.jpg"
+           Aspect="AspectFill"
+           Opacity="1"
+           HorizontalOptions="FillAndExpand"
+           VerticalOptions="FillAndExpand" />
+
+        <Label Text="Ogłoszenia klientów"
+               FontSize="40"
+               FontAttributes="Bold"
+               TextColor="White"
+               Opacity="1"
+               Padding="10"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               HorizontalTextAlignment="Center" />
+
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout Spacing="20" Padding="10" Margin="0,140,0,0">
+
+                <CollectionView ItemsSource="{Binding Ogloszenieznieruchomoscias}" Margin="0,0,0,20">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type nm:OgloszenieResponse}">
+                            <Frame BackgroundColor="White"
+                           CornerRadius="10"
+                           BorderColor="Gray"
+                           Padding="15">
+                                <StackLayout>
+                                    <!-- Tytuł -->
+                                    <Label Text="{Binding Tytul}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="Black"
+                                   HorizontalOptions="Start" />
+
+                                    <!-- Opis -->
+                                    <Label Text="{Binding Opis}"
+                                   FontSize="14"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Start"
+                                   Margin="0,5,0,10" />
+
+                                    <!-- Cena -->
+                                    <Label Text="{Binding Cena, StringFormat='Cena: {0:N0} PLN'}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="DarkGreen"
+                                   HorizontalOptions="Start" />
+
+                                    <!-- Powierzchnia i liczba pięter -->
+                                    <StackLayout Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
+                                        <Label Text="{Binding Nieruchomosc.PowierzchniaDomu, StringFormat='Powierzchnia: {0} m²'}"
+                                       FontSize="14"
+                                       TextColor="Black" />
+                                        <Label Text="{Binding Nieruchomosc.LiczbaPieter, StringFormat='Liczba pięter: {0}'}"
+                                       FontSize="14"
+                                       TextColor="Black" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Przycisk nawigacyjny -->
+                <StackLayout VerticalOptions="End" HorizontalOptions="FillAndExpand" Padding="10">
+                    <Button Text="Powrót do strony głównej"
+                    Command="{Binding NavigateBackCommand}"
+                    BackgroundColor="#64B5F6"
+                    TextColor="White"
+                    CornerRadius="5" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

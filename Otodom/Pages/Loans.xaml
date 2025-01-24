@@ -1,6 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Otodom.Pages.Kredyty"
+             x:Class="Otodom.Pages.Loans"
              Title="Kredyty">
     <Grid Padding="10">
         <!-- Kalkulator kredytowy -->
@@ -75,17 +75,13 @@
                     <Label Text="Całkowite odsetki:" FontAttributes="Bold" />
                     <Label Text="{Binding CalkowiteOdsetki, StringFormat='{0:N2} zł'}" FontSize="18" />
                 </VerticalStackLayout>
+                
+                <Button Text="Powrót do strony głównej"
+                        Command="{Binding NavigateBackCommand}"
+                        BackgroundColor="#64B5F6"
+                        TextColor="White"
+                        CornerRadius="5" />
             </VerticalStackLayout>
         </ScrollView>
-
-        <!-- Przycisk Powrót -->
-        <StackLayout VerticalOptions="End" HorizontalOptions="FillAndExpand" Padding="10">
-            <Button Text="Powrót do strony głównej"
-            Command="{Binding NavigateBackCommand}"
-            BackgroundColor="#64B5F6"
-            TextColor="White"
-            CornerRadius="5" />
-        </StackLayout>
-
     </Grid>
 </ContentPage>

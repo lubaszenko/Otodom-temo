@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Otodom.Models.ViewModels"
+             x:Class="Otodom.Pages.Agencies"
+             x:DataType="vm:AgenciesViewModel"
+             Title="Agencje">
+    
+    <VerticalStackLayout>
+        <Button Text="Powrót do strony głównej"
+                Command="{Binding NavigateBackCommand}"
+                BackgroundColor="#64B5F6"
+                TextColor="White"
+                CornerRadius="5" />
+    </VerticalStackLayout>
+</ContentPage>

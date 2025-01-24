@@ -9,7 +9,7 @@ namespace Otodom.Pages
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new WyswietlanieOgloszeniaViewModel();
+            BindingContext = new MainPageViewModel();
         }
     }
 }

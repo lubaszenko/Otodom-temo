@@ -57,6 +57,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Platforms\Android\Resources\xml\network_security_config.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Images\homepage.jpg" />
 	</ItemGroup>
 
@@ -74,22 +78,40 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\AddAdvertisement.xaml.cs">
+	    <DependentUpon>AddAdvertisement.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Agencies.xaml.cs">
+	    <DependentUpon>Agencies.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Loans.xaml.cs">
+	    <DependentUpon>Loans.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Advertisement.xaml.cs">
+	    <DependentUpon>Advertisement.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="App.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="AppShell.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Agencje.xaml">
+	  <MauiXaml Update="Pages\Agencies.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\DodajOgloszenie.xaml">
+	  <MauiXaml Update="Pages\AddAdvertisement.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Kredyty.xaml">
+	  <MauiXaml Update="Pages\Loans.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Advertisement.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\RegisterPage.xaml">

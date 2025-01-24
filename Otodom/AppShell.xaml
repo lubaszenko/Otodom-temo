@@ -7,24 +7,38 @@
     Shell.FlyoutBehavior="Disabled"
     Title="Otodom">
 
-    <!-- Strona główna -->
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
     
-    <ShellContent Title="Kredyty"
-                  ContentTemplate="{DataTemplate local:Kredyty}"
-                  Route="KredytyPage" />
-    <!-- Strona logowania -->
+    <ShellContent 
+        Title="Kredyty"
+        ContentTemplate="{DataTemplate local:Loans}"
+        Route="Loans" />
+
     <ShellContent
         Title="Logowanie"
         ContentTemplate="{DataTemplate local:LoginPage}"
         Route="LoginPage" />
 
-    <!-- Strona rejestracji -->
     <ShellContent
         Title="Rejestracja"
         ContentTemplate="{DataTemplate local:RegisterPage}"
         Route="RegisterPage" />
+
+    <ShellContent
+        Title="Ogłoszenia"
+        ContentTemplate="{DataTemplate local:Advertisement}"
+        Route="Advertisement" />
+
+    <ShellContent
+        Title="Agencje"
+        ContentTemplate="{DataTemplate local:Agencies}"
+        Route="Agencies" />
+
+    <ShellContent
+        Title="Dodawanie ogłoszenia"
+        ContentTemplate="{DataTemplate local:AddAdvertisement}"
+        Route="AddAdvertisement" />
 </Shell>

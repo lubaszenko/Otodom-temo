@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Otodom.Models.ViewModels"
              x:Class="Otodom.Pages.MainPage"
-             x:DataType="vm:WyswietlanieOgloszeniaViewModel"
+             x:DataType="vm:MainPageViewModel"
              Title="Householding">
 
     <Grid>
@@ -26,61 +26,72 @@
 
         <!-- Treść w ScrollView -->
         <ScrollView VerticalOptions="FillAndExpand">
-            <StackLayout Spacing="20" Padding="10" Margin="0,140,0,0">
+            <StackLayout Spacing="30" Padding="10" Margin="0,140,0,0">
 
                 <!-- Karta 1 -->
                 <Frame BackgroundColor="White"
-                       CornerRadius="10"
-                       BorderColor="Gray"
-                       Padding="15">
+               CornerRadius="10"
+               BorderColor="#E0E0E0"
+               HasShadow="True"
+               Padding="20">
                     <StackLayout>
-                        <Label Text="Luksusowy apartament w centrum miasta"
-                               FontSize="20"
-                               FontAttributes="Bold"
-                               TextColor="Black"
-                               HorizontalOptions="Start" />
-                        <Label Text="Przestronny apartament o powierzchni 120 m² z widokiem na panoramę miasta. Idealny dla rodziny."
-                               FontSize="14"
-                               TextColor="Gray"
-                               HorizontalOptions="Start"
-                               Margin="0,5,0,10" />
-                        <Label Text="Cena: 1 200 000 PLN"
-                               FontSize="18"
-                               FontAttributes="Bold"
-                               TextColor="DarkGreen"
-                               HorizontalOptions="Start" />
-                        <StackLayout Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
-                            <Label Text="Powierzchnia: 120 m²"
-                                   FontSize="14"
-                                   TextColor="Black" />
-                            <Label Text="Pokoje: 3"
-                                   FontSize="14"
-                                   TextColor="Black" />
-                        </StackLayout>
+                        <Label Text="Dysponujemy największą bazą ogłoszeń nieruchomości w Polsce. Badamy preferencje, analizujemy dane i pomagamy zrozumieć rynek nieruchomości."
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       HorizontalOptions="Start" />
                     </StackLayout>
                 </Frame>
 
                 <!-- Karta 2 -->
                 <Frame BackgroundColor="White"
-                       CornerRadius="10"
-                       BorderColor="Gray"
-                       Padding="15">
+               CornerRadius="10"
+               BorderColor="#E0E0E0"
+               HasShadow="True"
+               Padding="20">
                     <StackLayout>
-                        <Label Text="Nowoczesny dom z ogrodem"
-                               FontSize="20"
-                               FontAttributes="Bold"
-                               TextColor="Black"
-                               HorizontalOptions="Start" />
-                        <Label Text="Dom jednorodzinny o powierzchni 200 m² z dużym ogrodem i tarasem."
-                               FontSize="14"
-                               TextColor="Gray"
-                               HorizontalOptions="Start"
-                               Margin="0,5,0,10" />
-                        <Label Text="Cena: 950 000 PLN"
-                               FontSize="18"
-                               FontAttributes="Bold"
-                               TextColor="DarkGreen"
-                               HorizontalOptions="Start" />
+                        <Label Text="Znajdź wymarzoną nieruchomość. Przeglądaj setki ogłoszeń domów, mieszkań, działek, lokali inwestycyjnych i innych nieruchomości, których nie znajdziesz nigdzie indziej."
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       HorizontalOptions="Start" />
+                        <!-- Margines dodany w przycisku -->
+                        <Button Text="Sprawdź mieszkania"
+                        Command="{Binding NavigateToAdvertisementCommand}"
+                        BackgroundColor="#64B5F6"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        Padding="15,10"
+                        Margin="0,15,0,0"
+                        HeightRequest="50"
+                        HorizontalOptions="Center" />
+                    </StackLayout>
+                </Frame>
+
+                <!-- Karta 3 -->
+                <Frame BackgroundColor="White"
+               CornerRadius="10"
+               BorderColor="#E0E0E0"
+               HasShadow="True"
+               Padding="20">
+                    <StackLayout>
+                        <Label Text="Niezależnie od tego, czy postanowisz sprzedać sam, czy ze wsparciem agenta nieruchomości, pomożemy ci przejść przez ten proces szybko i sprawnie. Sprawdź możliwości!"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       HorizontalOptions="Start" />
+                        <!-- Margines dodany w przycisku -->
+                        <Button Text="Agencje nieruchomości"
+                        Command="{Binding NavigateToAgenciesCommand}"
+                        BackgroundColor="#64B5F6"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        Padding="15,10"
+                        Margin="0,15,0,0"
+                        HeightRequest="50"
+                        HorizontalOptions="Center" />
                     </StackLayout>
                 </Frame>
 
@@ -121,13 +132,69 @@
                                TextColor="Black"
                                HorizontalOptions="Center" />
                         <Button Text="Kalkulator kredytów"
-                                Command="{Binding NavigateToKredytyCommand}"
+                                Command="{Binding NavigateToLoansCommand}"
                                 BackgroundColor="#FFD600"
                                 TextColor="Black"
                                 CornerRadius="5" />
                     </StackLayout>
                 </Frame>
-
+                <!-- Kafelek do ogłoszeń -->
+                <Frame BackgroundColor="#FFFDE7"
+                       CornerRadius="10"
+                       Padding="15"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <StackLayout Spacing="10" HorizontalOptions="Center">
+                        <Label Text="Przejdź do ogłoszeń"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               HorizontalOptions="Center" />
+                        <Button Text="Ogłoszenia domów"
+                               Command="{Binding NavigateToAdvertisementCommand}"
+                               BackgroundColor="#FFD600"
+                               TextColor="Black"
+                               CornerRadius="5" />
+                    </StackLayout>
+                </Frame>
+                <!-- Kafelek do agencji -->
+                <Frame BackgroundColor="#FFFDE7"
+                       CornerRadius="10"
+                       Padding="15"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <StackLayout Spacing="10" HorizontalOptions="Center">
+                        <Label Text="Agencje współpracujące"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               HorizontalOptions="Center" />
+                        <Button Text="Zobacz nasze agencje"
+                                Command="{Binding NavigateToAgenciesCommand}"
+                                BackgroundColor="#FFD600"
+                                TextColor="Black"
+                                CornerRadius="5" />
+                    </StackLayout>
+                </Frame>
+                <!-- Kafelek do dodania ogłoszenia -->
+                <Frame BackgroundColor="#FFFDE7"
+                       CornerRadius="10"
+                       Padding="15"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <StackLayout Spacing="10" HorizontalOptions="Center">
+                        <Label Text="Chcesz sprzedać mieszkanie?"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               HorizontalOptions="Center" />
+                        <Button Text="Dodaj ogłoszenie"
+                                Command="{Binding NavigateToAddAdvertisementCommand}"
+                                BackgroundColor="#FFD600"
+                                TextColor="Black"
+                                CornerRadius="5" />
+                    </StackLayout>
+                </Frame>
             </StackLayout>
         </ScrollView>
     </Grid>

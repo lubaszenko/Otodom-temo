@@ -4,6 +4,7 @@ using ApiConsumer.IoC;
 using Otodom.Models;
 using Otodom.ViewModels;
 using Otodom.Pages;
+using Otodom.Models.ViewModels;
 
 namespace Otodom
 {
@@ -38,9 +39,18 @@ namespace Otodom
             // Rejestracja ViewModels
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<RegisterViewModel>();
+            builder.Services.AddTransient<MainPageViewModel>();
+            builder.Services.AddTransient<AgenciesViewModel>();
+            builder.Services.AddTransient<AddAdvertisementViewModel>();
+            builder.Services.AddTransient<DisplayAdvertisementViewModel>();
 
             // Rejestracja Pages
+            builder.Services.AddTransient<AddAdvertisement>();
+            builder.Services.AddTransient<Advertisement>();
+            builder.Services.AddTransient<Agencies>();
+            builder.Services.AddTransient<Loans>();
             builder.Services.AddTransient<LoginPage>();
+            builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<RegisterPage>();
 
             return builder.Build();
@@ -54,7 +64,7 @@ namespace Otodom
                 .UseSqlite($"Filename={dbPath}")
                 .Options);
 
-            // Tworzenie bazy danych i tabel, jeśli jeszcze nie istnieją
+            // Tworzenie bazy danych i tabel, nawet jeśli istnieją
             db.Database.EnsureCreated();
         }
     }
