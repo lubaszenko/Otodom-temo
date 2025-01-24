@@ -1,4 +1,3 @@
-using ApiConsumer;
 using Otodom.Models.ViewModels;
 namespace Otodom.Pages;
 

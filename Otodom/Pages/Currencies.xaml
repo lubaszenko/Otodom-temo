@@ -5,10 +5,18 @@
              x:Class="Otodom.Pages.Currencies"
              x:DataType="vm:CurrenciesViewModel"
              Title="Kursy walut">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ScrollView>
+        <StackLayout Spacing="20" Padding="10" VerticalOptions="Center">
+            <Button Text="Pobierz lokalizację"
+                    Command="{Binding GetLocationCommand}" />
+            <Label Text="{Binding LocationMessage}"
+                   HorizontalOptions="Center" />
+            <Button Text="Powrót do strony głównej"
+                    Command="{Binding NavigateBackCommand}"
+                    BackgroundColor="#64B5F6"
+                    TextColor="White"
+                    CornerRadius="5" />
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

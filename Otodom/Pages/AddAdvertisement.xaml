@@ -93,13 +93,7 @@
             <!-- Zdjęcia -->
             <VerticalStackLayout Spacing="10">
                 <Label Text="Zdjęcia (URL):" />
-                <CollectionView>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Entry Text="{}" Placeholder="Wprowadź URL zdjęcia" />
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <Entry Text="{}" Placeholder="Wprowadź URL zdjęcia" />
                 <Button Text="Dodaj zdjęcie" />
             </VerticalStackLayout>
 

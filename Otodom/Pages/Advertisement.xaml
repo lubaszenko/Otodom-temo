@@ -81,6 +81,5 @@
                 </StackLayout>
             </StackLayout>
         </ScrollView>
-
     </Grid>
 </ContentPage>

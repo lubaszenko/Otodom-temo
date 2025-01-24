@@ -2,15 +2,78 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Otodom.Models.ViewModels"
+             xmlns:nm="clr-namespace:ApiConsumer.DTO;assembly=ApiConsumer"
              x:Class="Otodom.Pages.Agencies"
              x:DataType="vm:AgenciesViewModel"
              Title="Agencje">
-    
-    <VerticalStackLayout>
-        <Button Text="Powrót do strony głównej"
-                Command="{Binding NavigateBackCommand}"
-                BackgroundColor="#64B5F6"
-                TextColor="White"
-                CornerRadius="5" />
-    </VerticalStackLayout>
+
+    <Grid>
+        <Image Source="homepage.jpg"
+           Aspect="AspectFill"
+           Opacity="1"
+           HorizontalOptions="FillAndExpand"
+           VerticalOptions="FillAndExpand" />
+
+        <Label Text="Agencje"
+               FontSize="40"
+               FontAttributes="Bold"
+               TextColor="White"
+               Opacity="1"
+               Padding="10"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               HorizontalTextAlignment="Center" />
+
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout Spacing="20" Padding="10" Margin="0,140,0,0">
+
+                <CollectionView ItemsSource="{Binding Agencjas}" Margin="0,0,0,20">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type nm:AgencjaResponse}">
+                            <Frame BackgroundColor="LightGray"
+                           CornerRadius="10"
+                           BorderColor="White"
+                           Padding="15"
+                           Margin="10,10,10,20">
+                                <StackLayout>
+
+                                    <Label Text="{Binding NazwaAgencji}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="Black"
+                                   HorizontalOptions="Start" />
+
+                                    <Label Text="{Binding NrTelefonuAgencji}"
+                                   FontSize="14"
+                                   TextColor="Black"
+                                   HorizontalOptions="Start"
+                                   Margin="0,5,0,10" />
+
+                                    <Label Text="{Binding Email}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="DarkGreen"
+                                   HorizontalOptions="Start" />
+
+                                    <Label Text="{Binding Nip}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="DarkGreen"
+                                   HorizontalOptions="Start" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <StackLayout VerticalOptions="End" HorizontalOptions="FillAndExpand" Padding="10">
+                    <Button Text="Powrót do strony głównej"
+                    Command="{Binding NavigateBackCommand}"
+                    BackgroundColor="#64B5F6"
+                    TextColor="White"
+                    CornerRadius="5" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

@@ -30,7 +30,7 @@ namespace Otodom.Models.ViewModels
         {
             try
             {
-                Console.WriteLine("Endpoint z ogłoszeniami działa.");
+                Console.WriteLine("Endpoint LoadDataHouse works.");
                 List<OgloszenieResponse> ogloszenies = await _clientService.GetOgloszenieznieruchomoscia();
                 foreach(var Ogloszenie in ogloszenies)
                 {
@@ -42,7 +42,7 @@ namespace Otodom.Models.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Endpoint z ogłoszeniami nie działa.");
+                Console.WriteLine("Endpoint LoadDataHouse doesn't work.");
             }
         }
 

@@ -3,9 +3,9 @@ namespace Otodom.Pages;
 
 public partial class Agencies : ContentPage
 {
-	public Agencies()
-	{
-		InitializeComponent();
-        BindingContext = new AgenciesViewModel();
+    public Agencies(AgenciesViewModel agenciesViewModel)
+    {
+        InitializeComponent();
+        BindingContext = agenciesViewModel;
     }
 }
