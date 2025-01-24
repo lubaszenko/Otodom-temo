@@ -195,6 +195,25 @@
                                 CornerRadius="5" />
                     </StackLayout>
                 </Frame>
+                <!-- Kafelek do kursów walut -->
+                <Frame BackgroundColor="#FFFDE7"
+                       CornerRadius="10"
+                       Padding="15"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <StackLayout Spacing="10" HorizontalOptions="Center">
+                        <Label Text="Interesuje Cię kredyt w innej walucie?"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="Black"
+                                HorizontalOptions="Center" />
+                        <Button Text="Sprawdź kursy walut"
+                                Command="{Binding NavigateToCurrenciesCommand}"
+                                BackgroundColor="#FFD600"
+                                TextColor="Black"
+                                CornerRadius="5" />
+                    </StackLayout>
+                </Frame>
             </StackLayout>
         </ScrollView>
     </Grid>

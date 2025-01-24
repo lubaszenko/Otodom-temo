@@ -41,4 +41,9 @@
         Title="Dodawanie ogłoszenia"
         ContentTemplate="{DataTemplate local:AddAdvertisement}"
         Route="AddAdvertisement" />
+
+    <ShellContent
+        Title="Kursy walut"
+        ContentTemplate="{DataTemplate local:Currencies}"
+        Route="Currencies" />
 </Shell>

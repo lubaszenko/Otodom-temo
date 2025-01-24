@@ -12,6 +12,7 @@ namespace Otodom.Models.ViewModels
         public ICommand NavigateToAdvertisementCommand { get; }
         public ICommand NavigateToAgenciesCommand { get; }
         public ICommand NavigateToAddAdvertisementCommand { get; }
+        public ICommand NavigateToCurrenciesCommand { get; }
 
         public MainPageViewModel()
         {
@@ -21,6 +22,7 @@ namespace Otodom.Models.ViewModels
             NavigateToAdvertisementCommand = new AsyncRelayCommand(NavigateToAdvertisementAsync);
             NavigateToAgenciesCommand = new AsyncRelayCommand(NavigateToAgenciesAsync);
             NavigateToAddAdvertisementCommand = new AsyncRelayCommand(NavigateToAddAdvertisementAsync);
+            NavigateToCurrenciesCommand = new AsyncRelayCommand(NavigateToCurrenciesAsync);
         }
 
         private async Task NavigateToLoginAsync()
@@ -51,6 +53,11 @@ namespace Otodom.Models.ViewModels
         private async Task NavigateToAddAdvertisementAsync()
         {
             await Shell.Current.GoToAsync("//AddAdvertisement");
+        }
+
+        private async Task NavigateToCurrenciesAsync()
+        {
+            await Shell.Current.GoToAsync("//Currencies");
         }
     }
 }

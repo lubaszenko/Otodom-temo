@@ -29,10 +29,11 @@
                 <CollectionView ItemsSource="{Binding Ogloszenieznieruchomoscias}" Margin="0,0,0,20">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type nm:OgloszenieResponse}">
-                            <Frame BackgroundColor="White"
+                            <Frame BackgroundColor="LightGray"
                            CornerRadius="10"
-                           BorderColor="Gray"
-                           Padding="15">
+                           BorderColor="White"
+                           Padding="15"
+                           Margin="10,10,10,20">
                                 <StackLayout>
                                     <!-- Tytuł -->
                                     <Label Text="{Binding Tytul}"
@@ -44,7 +45,7 @@
                                     <!-- Opis -->
                                     <Label Text="{Binding Opis}"
                                    FontSize="14"
-                                   TextColor="Gray"
+                                   TextColor="Black"
                                    HorizontalOptions="Start"
                                    Margin="0,5,0,10" />
 

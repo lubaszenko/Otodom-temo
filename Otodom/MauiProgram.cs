@@ -41,6 +41,7 @@ namespace Otodom
             builder.Services.AddTransient<RegisterViewModel>();
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<AgenciesViewModel>();
+            builder.Services.AddTransient<CurrenciesViewModel>();
             builder.Services.AddTransient<AddAdvertisementViewModel>();
             builder.Services.AddTransient<DisplayAdvertisementViewModel>();
 
@@ -48,6 +49,7 @@ namespace Otodom
             builder.Services.AddTransient<AddAdvertisement>();
             builder.Services.AddTransient<Advertisement>();
             builder.Services.AddTransient<Agencies>();
+            builder.Services.AddTransient<Currencies>();
             builder.Services.AddTransient<Loans>();
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<MainPage>();
