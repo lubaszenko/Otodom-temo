@@ -11,18 +11,22 @@ namespace Otodom.Models.ViewModels
         private string locationMessage;
         public ICommand GetLocationCommand { get; }
         public ICommand NavigateBackCommand { get; }
+        public ICommand OpenMapCommand { get; }
+
+        private double latitude; 
+        private double longitude; 
 
         public CurrenciesViewModel()
         {
             GetLocationCommand = new AsyncRelayCommand(GetLocationAsync);
             NavigateBackCommand = new AsyncRelayCommand(NavigateBackCommandAsync);
+            OpenMapCommand = new AsyncRelayCommand(OpenLocationInGoogleMapsAsync);
         }
 
         private async Task GetLocationAsync()
         {
             try
             {
-                // Sprawdzenie uprawnień
                 var status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
                 if (status != PermissionStatus.Granted)
                 {
@@ -30,7 +34,6 @@ namespace Otodom.Models.ViewModels
                     return;
                 }
 
-                // Pobranie lokalizacji
                 var location = await Geolocation.Default.GetLastKnownLocationAsync();
                 if (location == null)
                 {
@@ -43,7 +46,9 @@ namespace Otodom.Models.ViewModels
 
                 if (location != null)
                 {
-                    LocationMessage = $"Szerokość: {location.Latitude}, Długość: {location.Longitude}";
+                    latitude = location.Latitude;
+                    longitude = location.Longitude;
+                    LocationMessage = $"Szerokość: {latitude}, Długość: {longitude}";
                 }
                 else
                 {
@@ -63,6 +68,19 @@ namespace Otodom.Models.ViewModels
                 LocationMessage = $"Błąd: {ex.Message}";
             }
         }
+
+        private async Task OpenLocationInGoogleMapsAsync()
+        {
+            if (latitude == 0 || longitude == 0)
+            {
+                LocationMessage = "Najpierw pobierz lokalizację.";
+                return;
+            }
+
+            var url = $"https://www.google.com/maps?q={latitude},{longitude}";
+            await Launcher.Default.OpenAsync(url);
+        }
+
         private async Task NavigateBackCommandAsync()
         {
             await Shell.Current.GoToAsync("//MainPage");

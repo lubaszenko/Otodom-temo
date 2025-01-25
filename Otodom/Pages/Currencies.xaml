@@ -7,11 +7,27 @@
              Title="Kursy walut">
 
     <ScrollView>
-        <StackLayout Spacing="20" Padding="10" VerticalOptions="Center">
-            <Button Text="Pobierz lokalizację"
-                    Command="{Binding GetLocationCommand}" />
-            <Label Text="{Binding LocationMessage}"
+        <StackLayout Padding="20" Spacing="20">
+            
+            <Label Text="{Binding LocationMessage}" 
+                   FontSize="16" 
+                   TextColor="Black"
                    HorizontalOptions="Center" />
+
+            <Button Text="Pobierz lokalizację"
+                    Command="{Binding GetLocationCommand}" 
+                    BackgroundColor="#2196F3"
+                    TextColor="White" 
+                    CornerRadius="10"
+                    HeightRequest="50" />
+
+            <Button Text="Pokaż w Google Maps"
+                    Command="{Binding OpenMapCommand}" 
+                    BackgroundColor="#4CAF50"
+                    TextColor="White" 
+                    CornerRadius="10"
+                    HeightRequest="50" />
+
             <Button Text="Powrót do strony głównej"
                     Command="{Binding NavigateBackCommand}"
                     BackgroundColor="#64B5F6"

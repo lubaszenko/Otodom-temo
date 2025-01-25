@@ -13,53 +13,83 @@
            Opacity="1"
            HorizontalOptions="FillAndExpand"
            VerticalOptions="FillAndExpand" />
-
-        <Label Text="Agencje"
-               FontSize="40"
-               FontAttributes="Bold"
-               TextColor="White"
-               Opacity="1"
-               Padding="10"
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               HorizontalTextAlignment="Center" />
-
+        <StackLayout>
+            <Label Text="Nasze współprace"
+                       FontSize="40"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       Opacity="1"
+                       Padding="10"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       HorizontalTextAlignment="Center" />
+        </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Spacing="20" Padding="10" Margin="0,140,0,0">
-
+                <Frame BackgroundColor="LightGray"
+                       BorderColor="White">
+                    <Label Text="Dzięki tym współpracom jesteśmy w stanie zapewnić naszym klientom najwyższy poziom komfortu oraz unikalną jakość."
+                           FontSize="17"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Opacity="1"
+                           Padding="10"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           HorizontalTextAlignment="Center" />
+                </Frame>
                 <CollectionView ItemsSource="{Binding Agencjas}" Margin="0,0,0,20">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type nm:AgencjaResponse}">
                             <Frame BackgroundColor="LightGray"
-                           CornerRadius="10"
-                           BorderColor="White"
-                           Padding="15"
-                           Margin="10,10,10,20">
+                   CornerRadius="10"
+                   BorderColor="White"
+                   Padding="15"
+                   Margin="10,10,10,20">
                                 <StackLayout>
+                                    <!-- Obraz -->
+                                    <Image Source="{Binding ImageSource}"
+                           HeightRequest="250"
+                           WidthRequest="250"
+                           Aspect="AspectFit"
+                           HorizontalOptions="Center" />
 
+                                    <!-- Dane agencji -->
                                     <Label Text="{Binding NazwaAgencji}"
-                                   FontSize="20"
-                                   FontAttributes="Bold"
-                                   TextColor="Black"
-                                   HorizontalOptions="Start" />
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Start" />
 
-                                    <Label Text="{Binding NrTelefonuAgencji}"
-                                   FontSize="14"
-                                   TextColor="Black"
-                                   HorizontalOptions="Start"
-                                   Margin="0,5,0,10" />
+                                    <!-- Telefon -->
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Telefon: "
+                               FontSize="14"
+                               TextColor="Black" />
+                                        <Label Text="{Binding NrTelefonuAgencji}"
+                               FontSize="14"
+                               TextColor="DarkGreen" />
+                                    </StackLayout>
 
-                                    <Label Text="{Binding Email}"
-                                   FontSize="18"
-                                   FontAttributes="Bold"
-                                   TextColor="DarkGreen"
-                                   HorizontalOptions="Start" />
+                                    <!-- Email -->
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Email: "
+                               FontSize="14"
+                               TextColor="Black" />
+                                        <Label Text="{Binding Email}"
+                               FontSize="14"
+                               TextColor="DarkGreen" />
+                                    </StackLayout>
 
-                                    <Label Text="{Binding Nip}"
-                                   FontSize="18"
-                                   FontAttributes="Bold"
-                                   TextColor="DarkGreen"
-                                   HorizontalOptions="Start" />
+                                    <!-- NIP -->
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="NIP: "
+                               FontSize="14"
+                               TextColor="Black" />
+                                        <Label Text="{Binding Nip}"
+                               FontSize="14"
+                               TextColor="DarkGreen" />
+                                    </StackLayout>
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>

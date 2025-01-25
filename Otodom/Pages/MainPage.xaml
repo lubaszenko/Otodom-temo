@@ -6,14 +6,12 @@
              Title="Householding">
 
     <Grid>
-        <!-- Tło -->
         <Image Source="homepage.jpg"
                Aspect="AspectFill"
                Opacity="1"
                HorizontalOptions="FillAndExpand"
                VerticalOptions="FillAndExpand" />
 
-        <!-- Nagłówek -->
         <Label Text="Witamy na Householding"
                FontSize="40"
                FontAttributes="Bold"
@@ -24,78 +22,9 @@
                VerticalOptions="Start"
                HorizontalTextAlignment="Center" />
 
-        <!-- Treść w ScrollView -->
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Spacing="30" Padding="10" Margin="0,140,0,0">
 
-                <!-- Karta 1 -->
-                <Frame BackgroundColor="White"
-               CornerRadius="10"
-               BorderColor="#E0E0E0"
-               HasShadow="True"
-               Padding="20">
-                    <StackLayout>
-                        <Label Text="Dysponujemy największą bazą ogłoszeń nieruchomości w Polsce. Badamy preferencje, analizujemy dane i pomagamy zrozumieć rynek nieruchomości."
-                       FontSize="14"
-                       FontAttributes="Bold"
-                       TextColor="Black"
-                       HorizontalOptions="Start" />
-                    </StackLayout>
-                </Frame>
-
-                <!-- Karta 2 -->
-                <Frame BackgroundColor="White"
-               CornerRadius="10"
-               BorderColor="#E0E0E0"
-               HasShadow="True"
-               Padding="20">
-                    <StackLayout>
-                        <Label Text="Znajdź wymarzoną nieruchomość. Przeglądaj setki ogłoszeń domów, mieszkań, działek, lokali inwestycyjnych i innych nieruchomości, których nie znajdziesz nigdzie indziej."
-                       FontSize="14"
-                       FontAttributes="Bold"
-                       TextColor="Black"
-                       HorizontalOptions="Start" />
-                        <!-- Margines dodany w przycisku -->
-                        <Button Text="Sprawdź mieszkania"
-                        Command="{Binding NavigateToAdvertisementCommand}"
-                        BackgroundColor="#64B5F6"
-                        TextColor="White"
-                        FontAttributes="Bold"
-                        CornerRadius="10"
-                        Padding="15,10"
-                        Margin="0,15,0,0"
-                        HeightRequest="50"
-                        HorizontalOptions="Center" />
-                    </StackLayout>
-                </Frame>
-
-                <!-- Karta 3 -->
-                <Frame BackgroundColor="White"
-               CornerRadius="10"
-               BorderColor="#E0E0E0"
-               HasShadow="True"
-               Padding="20">
-                    <StackLayout>
-                        <Label Text="Niezależnie od tego, czy postanowisz sprzedać sam, czy ze wsparciem agenta nieruchomości, pomożemy ci przejść przez ten proces szybko i sprawnie. Sprawdź możliwości!"
-                       FontSize="14"
-                       FontAttributes="Bold"
-                       TextColor="Black"
-                       HorizontalOptions="Start" />
-                        <!-- Margines dodany w przycisku -->
-                        <Button Text="Agencje nieruchomości"
-                        Command="{Binding NavigateToAgenciesCommand}"
-                        BackgroundColor="#64B5F6"
-                        TextColor="White"
-                        FontAttributes="Bold"
-                        CornerRadius="10"
-                        Padding="15,10"
-                        Margin="0,15,0,0"
-                        HeightRequest="50"
-                        HorizontalOptions="Center" />
-                    </StackLayout>
-                </Frame>
-
-                <!-- Kafelek logowania/rejestracji -->
                 <Frame BackgroundColor="#E3F2FD"
                        CornerRadius="10"
                        Padding="15"
@@ -109,7 +38,7 @@
                                HorizontalOptions="Center" />
                         <Button Text="Zaloguj się"
                                 Command="{Binding NavigateToLoginCommand}"
-                                BackgroundColor="#2196F3"
+                                BackgroundColor="#64B5F6"
                                 TextColor="White"
                                 CornerRadius="5" />
                         <Button Text="Załóż konto"
@@ -119,99 +48,185 @@
                                 CornerRadius="5" />
                     </StackLayout>
                 </Frame>
-                <!-- Kafelek do kalkulatora kredytowego -->
-                <Frame BackgroundColor="#FFFDE7"
+
+                <Frame BackgroundColor="White"
                        CornerRadius="10"
-                       Padding="15"
+                       BorderColor="#E0E0E0"
+                       HasShadow="True"
+                       Padding="20"
                        HorizontalOptions="Center"
                        VerticalOptions="Center">
-                    <StackLayout Spacing="10" HorizontalOptions="Center">
-                        <Label Text="Przejdź do kalkulatora kredytowego"
-                               FontSize="18"
+                    <StackLayout>
+                        <Label Text="Dysponujemy największą bazą ogłoszeń nieruchomości w Polsce. Badamy preferencje, analizujemy dane i pomagamy zrozumieć rynek nieruchomości."
+                               FontSize="14"
                                FontAttributes="Bold"
                                TextColor="Black"
-                               HorizontalOptions="Center" />
-                        <Button Text="Kalkulator kredytów"
-                                Command="{Binding NavigateToLoansCommand}"
-                                BackgroundColor="#FFD600"
-                                TextColor="Black"
-                                CornerRadius="5" />
+                               HorizontalOptions="Start" />
                     </StackLayout>
                 </Frame>
-                <!-- Kafelek do ogłoszeń -->
-                <Frame BackgroundColor="#FFFDE7"
+
+                <Frame BackgroundColor="White"
                        CornerRadius="10"
-                       Padding="15"
+                       BorderColor="#E0E0E0"
+                       HasShadow="True"
+                       Padding="20"
                        HorizontalOptions="Center"
                        VerticalOptions="Center">
-                    <StackLayout Spacing="10" HorizontalOptions="Center">
-                        <Label Text="Przejdź do ogłoszeń"
+                    <StackLayout>
+                        <Label Text="Ogłoszenia mieszkań"
                                FontSize="18"
                                FontAttributes="Bold"
                                TextColor="Black"
+                               Margin="0,0,0,10"
                                HorizontalOptions="Center" />
-                        <Button Text="Ogłoszenia domów"
-                               Command="{Binding NavigateToAdvertisementCommand}"
-                               BackgroundColor="#FFD600"
+                        <Label Text="Znajdź wymarzoną nieruchomość. Przeglądaj setki ogłoszeń domów, mieszkań, działek, lokali inwestycyjnych i innych nieruchomości, których nie znajdziesz nigdzie indziej."
+                               FontSize="14"
+                               FontAttributes="Bold"
                                TextColor="Black"
-                               CornerRadius="5" />
+                               HorizontalOptions="Start" />
+                        
+                        <Button Text="Sprawdź mieszkania"
+                                Command="{Binding NavigateToAdvertisementCommand}"
+                                BackgroundColor="#64B5F6"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="10"
+                                Padding="15,10"
+                                Margin="0,15,0,0"
+                                HeightRequest="50"
+                                HorizontalOptions="Center" />
                     </StackLayout>
                 </Frame>
-                <!-- Kafelek do agencji -->
-                <Frame BackgroundColor="#FFFDE7"
+
+                <Frame BackgroundColor="White"
                        CornerRadius="10"
-                       Padding="15"
+                       BorderColor="#E0E0E0"
+                       HasShadow="True"
+                       Padding="20"
                        HorizontalOptions="Center"
                        VerticalOptions="Center">
-                    <StackLayout Spacing="10" HorizontalOptions="Center">
-                        <Label Text="Agencje współpracujące"
+                    <StackLayout>
+                        <Label Text="Agencje nieruchomości"
                                FontSize="18"
                                FontAttributes="Bold"
                                TextColor="Black"
+                               Margin="0,0,0,10"
                                HorizontalOptions="Center" />
+                        <Label Text="Niezależnie od tego, czy postanowisz sprzedać sam, czy ze wsparciem agenta nieruchomości, pomożemy ci przejść przez ten proces szybko i sprawnie. Sprawdź możliwości!"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               HorizontalOptions="Start" />
+
                         <Button Text="Zobacz nasze agencje"
                                 Command="{Binding NavigateToAgenciesCommand}"
-                                BackgroundColor="#FFD600"
-                                TextColor="Black"
-                                CornerRadius="5" />
+                                BackgroundColor="#64B5F6"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="10"
+                                Padding="15,10"
+                                Margin="0,15,0,0"
+                                HeightRequest="50"
+                                HorizontalOptions="Center" />
                     </StackLayout>
                 </Frame>
-                <!-- Kafelek do dodania ogłoszenia -->
-                <Frame BackgroundColor="#FFFDE7"
-                       CornerRadius="10"
-                       Padding="15"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center">
-                    <StackLayout Spacing="10" HorizontalOptions="Center">
-                        <Label Text="Chcesz sprzedać mieszkanie?"
+
+                <Frame BackgroundColor="White"
+                        CornerRadius="10"
+                        BorderColor="#E0E0E0"
+                        HasShadow="True"
+                        Padding="20"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                    <StackLayout>
+                        <Label Text="Kalkulator kredytu hipotecznego"
                                FontSize="18"
                                FontAttributes="Bold"
                                TextColor="Black"
+                               Margin="0,0,0,10"
                                HorizontalOptions="Center" />
-                        <Button Text="Dodaj ogłoszenie"
-                                Command="{Binding NavigateToAddAdvertisementCommand}"
-                                BackgroundColor="#FFD600"
-                                TextColor="Black"
-                                CornerRadius="5" />
+                        <Label Text="Kalkulator kredytu hipotecznego pozwala obliczyć wysokość raty kredytu na podstawie wprowadzonej ceny nieruchomości, wkładu własnego, okresu spłaty oraz oprocentowania. Dzięki temu narzędziu możesz szybko zaplanować wydatki związane z zakupem wymarzonej nieruchomości."
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               HorizontalOptions="Start" />
+
+                        <Button Text="Oblisz swoją zdolność kredytową"
+                                Command="{Binding NavigateToLoansCommand}"
+                                BackgroundColor="#64B5F6"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="10"
+                                Padding="15,10"
+                                Margin="0,15,0,0"
+                                HeightRequest="50"
+                                HorizontalOptions="Center" />
                     </StackLayout>
                 </Frame>
-                <!-- Kafelek do kursów walut -->
-                <Frame BackgroundColor="#FFFDE7"
+
+                <Frame BackgroundColor="White"
                        CornerRadius="10"
-                       Padding="15"
+                       BorderColor="#E0E0E0"
+                       HasShadow="True"
+                       Padding="20"
                        HorizontalOptions="Center"
                        VerticalOptions="Center">
-                    <StackLayout Spacing="10" HorizontalOptions="Center">
-                        <Label Text="Interesuje Cię kredyt w innej walucie?"
+                    <StackLayout>
+                        <Label Text="Sprzedaż własnego mieszkania?"
                                 FontSize="18"
                                 FontAttributes="Bold"
                                 TextColor="Black"
+                                Margin="0,0,0,10"
                                 HorizontalOptions="Center" />
-                        <Button Text="Sprawdź kursy walut"
-                                Command="{Binding NavigateToCurrenciesCommand}"
-                                BackgroundColor="#FFD600"
+                        <Label Text="Chcesz szybko i łatwo sprzedać swoje mieszkanie? Skorzystaj z naszej platformy, aby dodać ogłoszenie w kilku prostych krokach. Dzięki intuicyjnemu interfejsowi dotrzesz do szerokiego grona zainteresowanych klientów i zwiększysz szansę na szybkie znalezienie kupca."
+                                FontSize="14"
+                                FontAttributes="Bold"
                                 TextColor="Black"
-                                CornerRadius="5" />
+                                HorizontalOptions="Start" />
+
+                        <Button Text="Dodaj ogłoszenie"
+                                Command="{Binding NavigateToAddAdvertisementCommand}"
+                                BackgroundColor="#64B5F6"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="10"
+                                Padding="15,10"
+                                Margin="0,15,0,0"
+                                HeightRequest="50"
+                                HorizontalOptions="Center" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="White"
+                       CornerRadius="10"
+                       BorderColor="#E0E0E0"
+                       HasShadow="True"
+                       Padding="20"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <StackLayout>
+                        <Label Text="Kupno w innej walucie"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="Black"
+                                Margin="0,0,0,10"
+                                HorizontalOptions="Center" />
+                        <Label Text="Planujesz zakup nieruchomości w innej walucie? Skorzystaj z naszego narzędzia, aby sprawdzić aktualne kursy wymiany walut i dokładnie zaplanować swoje wydatki. Bądź na bieżąco z najnowszymi kursami i podejmuj świadome decyzje finansowe."
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="Black"
+                                HorizontalOptions="Start" />
+
+                        <Button Text="Przejrzyj kursy walut"
+                                Command="{Binding NavigateToCurrenciesCommand}"
+                                BackgroundColor="#64B5F6"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="10"
+                                Padding="15,10"
+                                Margin="0,15,0,0"
+                                HeightRequest="50"
+                                HorizontalOptions="Center" />
                     </StackLayout>
                 </Frame>
             </StackLayout>

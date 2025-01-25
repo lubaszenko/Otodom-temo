@@ -7,5 +7,6 @@
         public decimal NrTelefonuAgencji { get; set; }
         public string Email { get; set; } = null!;
         public decimal Nip { get; set; }
+        public string ImageSource { get; set; } = null!;
     }
 }

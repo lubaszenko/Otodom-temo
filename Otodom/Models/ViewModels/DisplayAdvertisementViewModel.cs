@@ -15,12 +15,15 @@ namespace Otodom.Models.ViewModels
 
         public ICommand NavigateBackCommand { get; }
 
+        public ICommand ShowDetailsCommand { get; }
+
         [ObservableProperty]
         private ObservableCollection<OgloszenieResponse> _ogloszenieznieruchomoscias = new();
 
         public DisplayAdvertisementViewModel(ApiClientService clientService) 
         {
             _clientService = clientService;
+            ShowDetailsCommand = new Command<OgloszenieResponse>(ShowDetails);
             NavigateBackCommand = new AsyncRelayCommand(NavigateBackCommandAsync);
             LoadDataHouseCommand = new AsyncRelayCommand(LoadDataHouseAsync);
             LoadDataHouseCommand.Execute(null);
@@ -44,6 +47,18 @@ namespace Otodom.Models.ViewModels
             {
                 Console.WriteLine("Endpoint LoadDataHouse doesn't work.");
             }
+        }
+
+        private async void ShowDetails(OgloszenieResponse ogloszenie)
+        {
+            if (ogloszenie == null)
+                return;
+
+            string szczegoly = $"Imię wystawiającego: {ogloszenie.ImieKlienta}\n" +
+                               $"Telefon: {ogloszenie.Telefon}\n" +
+                               $"E-mail: { ogloszenie.Email}";
+
+            await Application.Current.MainPage.DisplayAlert("Dane kontaktowe", szczegoly, "OK");
         }
 
         private async Task NavigateBackCommandAsync()

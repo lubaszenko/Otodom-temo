@@ -25,18 +25,14 @@ namespace Otodom
             builder.Logging.AddDebug();
 #endif
 
-            // Dodanie ApiClientService
             builder.Services.AddApiClientService(x => x.ApiBaseAddress = "http://10.0.2.2:5046/");
 
-            // Ścieżka do bazy danych SQLite
             string dbPath = Path.Combine(FileSystem.AppDataDirectory, "AppDatabase.db");
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlite($"Filename={dbPath}"));
 
-            // Inicjalizacja bazy danych
             InitializeDatabase(dbPath);
 
-            // Rejestracja ViewModels
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<RegisterViewModel>();
             builder.Services.AddTransient<MainPageViewModel>();
@@ -45,7 +41,6 @@ namespace Otodom
             builder.Services.AddTransient<AddAdvertisementViewModel>();
             builder.Services.AddTransient<DisplayAdvertisementViewModel>();
 
-            // Rejestracja Pages
             builder.Services.AddTransient<AddAdvertisement>();
             builder.Services.AddTransient<Advertisement>();
             builder.Services.AddTransient<Agencies>();
@@ -58,7 +53,6 @@ namespace Otodom
             return builder.Build();
         }
 
-        // Metoda do inicjalizacji bazy danych
         private static void InitializeDatabase(string dbPath)
         {
             using var db = new AppDbContext(
@@ -66,7 +60,6 @@ namespace Otodom
                 .UseSqlite($"Filename={dbPath}")
                 .Options);
 
-            // Tworzenie bazy danych i tabel, nawet jeśli istnieją
             db.Database.EnsureCreated();
         }
     }

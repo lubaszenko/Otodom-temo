@@ -36,6 +36,7 @@ namespace Otodom.Models.ViewModels
                 {
                     if(!_agencjas.Any(a => a.IdAgencji == Agencja.IdAgencji))
                     {
+                        Agencja.ImageSource = $"Images/{Agencja.NazwaAgencji.ToLower().Replace(" ", "_")}.jpg";
                         _agencjas.Add(Agencja);
                     }
                 }
