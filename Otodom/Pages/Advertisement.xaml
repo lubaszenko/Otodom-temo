@@ -93,6 +93,11 @@
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DisplayAdvertisementViewModel}}, Path=ShowDetailsCommand}"
                                                 CommandParameter="{Binding}" />
                                     </StackLayout>
+                                        <Button Text="Usuń ogłoszenie"
+                                                BackgroundColor="#64B5F6"
+                                                TextColor="White"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DisplayAdvertisementViewModel}}, Path=DeleteCommand}"
+                                                CommandParameter="{Binding Id}" />
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>
