@@ -1,9 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Otodom.Pages.Loans"
              Title="Kredyty">
     <Grid Padding="10">
-        <!-- Kalkulator kredytowy -->
         <ScrollView>
             <VerticalStackLayout Spacing="20" Padding="10">
 
@@ -12,7 +12,7 @@
                        FontAttributes="Bold"
                        HorizontalOptions="Center" />
 
-                <!-- Cena nieruchomości -->
+                <!-- Cena nieruchomości (PLN zawsze) -->
                 <VerticalStackLayout Spacing="10">
                     <Label Text="Cena nieruchomości:" />
                     <Slider Minimum="50000"
@@ -21,7 +21,7 @@
                     <Entry Text="{Binding CenaNieruchomosci, Mode=TwoWay}"
                            Keyboard="Numeric"
                            HorizontalOptions="FillAndExpand" />
-                    <Label Text="{Binding CenaNieruchomosci, StringFormat='Cena: {0:N0} zł'}"
+                    <Label Text="{Binding CenaNieruchomosci, StringFormat='Cena: {0:N0} PLN'}"
                            FontAttributes="Bold" />
                 </VerticalStackLayout>
 
@@ -64,18 +64,26 @@
                            FontAttributes="Bold" />
                 </VerticalStackLayout>
 
+                <!-- Wybór waluty -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Wybierz walutę:" />
+                    <Picker ItemsSource="{Binding Currencies}"
+                            SelectedItem="{Binding SelectedCurrency}" />
+                </VerticalStackLayout>
+
                 <!-- Wyniki kalkulacji -->
                 <VerticalStackLayout Spacing="10">
                     <Label Text="Rata miesięczna:" FontAttributes="Bold" />
-                    <Label Text="{Binding RataMiesieczna, StringFormat='{0:N2} zł'}" FontSize="18" />
+                    <Label Text="{Binding PrzeliczonaRataMiesieczna}" FontSize="18" />
 
                     <Label Text="Kwota kredytu do spłaty:" FontAttributes="Bold" />
-                    <Label Text="{Binding KwotaKredytuDoSplaty, StringFormat='{0:N2} zł'}" FontSize="18" />
+                    <Label Text="{Binding PrzeliczonaKwotaKredytuDoSplaty}" FontSize="18" />
 
                     <Label Text="Całkowite odsetki:" FontAttributes="Bold" />
-                    <Label Text="{Binding CalkowiteOdsetki, StringFormat='{0:N2} zł'}" FontSize="18" />
+                    <Label Text="{Binding PrzeliczoneCalkowiteOdsetki}" FontSize="18" />
                 </VerticalStackLayout>
-                
+
+                <!-- Powrót -->
                 <Button Text="Powrót do strony głównej"
                         Command="{Binding NavigateBackCommand}"
                         BackgroundColor="#64B5F6"

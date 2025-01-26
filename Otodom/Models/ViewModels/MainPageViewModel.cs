@@ -1,11 +1,23 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Otodom.Models.ViewModels
 {
     public partial class MainPageViewModel : ObservableObject
     {
+        [ObservableProperty]
+        private bool isLoggedIn; // Automatycznie obsługuje powiadomienia o zmianach
+
+        // Właściwość do odczytu i zapisu z powiadamianiem o zmianach
+        private bool _isNotLoggedIn;
+        public bool IsNotLoggedIn
+        {
+            get => _isNotLoggedIn;
+            set => SetProperty(ref _isNotLoggedIn, value); // Powiadamianie o zmianie
+        }
+
         public ICommand NavigateToLoginCommand { get; }
         public ICommand NavigateToRegisterCommand { get; }
         public ICommand NavigateToLoansCommand { get; }
@@ -13,6 +25,7 @@ namespace Otodom.Models.ViewModels
         public ICommand NavigateToAgenciesCommand { get; }
         public ICommand NavigateToAddAdvertisementCommand { get; }
         public ICommand NavigateToCurrenciesCommand { get; }
+        public ICommand LogoutCommand { get; }
 
         public MainPageViewModel()
         {
@@ -23,11 +36,19 @@ namespace Otodom.Models.ViewModels
             NavigateToAgenciesCommand = new AsyncRelayCommand(NavigateToAgenciesAsync);
             NavigateToAddAdvertisementCommand = new AsyncRelayCommand(NavigateToAddAdvertisementAsync);
             NavigateToCurrenciesCommand = new AsyncRelayCommand(NavigateToCurrenciesAsync);
+            LogoutCommand = new RelayCommand(Logout);
+
+            // Domyślne wartości
+            IsLoggedIn = false;
+            IsNotLoggedIn = true;
         }
 
         private async Task NavigateToLoginAsync()
         {
+            // Przejście do strony logowania
             await Shell.Current.GoToAsync("//LoginPage");
+
+           
         }
 
         private async Task NavigateToRegisterAsync()
@@ -52,12 +73,25 @@ namespace Otodom.Models.ViewModels
 
         private async Task NavigateToAddAdvertisementAsync()
         {
-            await Shell.Current.GoToAsync("//AddAdvertisement");
+            if (IsLoggedIn)
+            {
+                await Shell.Current.GoToAsync("//AddAdvertisement");
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Błąd", "Musisz być zalogowany, aby dodać ogłoszenie.", "OK");
+            }
         }
 
         private async Task NavigateToCurrenciesAsync()
         {
             await Shell.Current.GoToAsync("//Currencies");
+        }
+
+        private void Logout()
+        {
+            IsLoggedIn = false;
+            IsNotLoggedIn = true; // Ręczna aktualizacja
         }
     }
 }

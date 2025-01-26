@@ -1,11 +1,17 @@
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 
 namespace Otodom.Pages
 {
     public partial class Loans : ContentPage, INotifyPropertyChanged
     {
+        private readonly HttpClient _httpClient = new HttpClient();
+
         private int _cenaNieruchomosci = 920000;
         public int CenaNieruchomosci
         {
@@ -54,9 +60,27 @@ namespace Otodom.Pages
             }
         }
 
-        public decimal KwotaKredytuDoSplaty { get; private set; }
-        public decimal RataMiesieczna { get; private set; }
-        public decimal CalkowiteOdsetki { get; private set; }
+        private string _selectedCurrency = "PLN";
+        public string SelectedCurrency
+        {
+            get => _selectedCurrency;
+            set
+            {
+                _selectedCurrency = value;
+                OnPropertyChanged();
+                ObliczPrzewalutowanie();
+            }
+        }
+
+        public ObservableCollection<string> Currencies { get; } = new ObservableCollection<string> { "PLN", "EUR", "USD" };
+
+        public decimal RataMiesieczna { get; private set; } // Dodano brakuj¹c¹ w³aœciwoœæ
+        public decimal KwotaKredytuDoSplaty { get; private set; } // Dodano brakuj¹c¹ w³aœciwoœæ
+        public decimal CalkowiteOdsetki { get; private set; } // Dodano brakuj¹c¹ w³aœciwoœæ
+
+        public string PrzeliczonaRataMiesieczna { get; private set; }
+        public string PrzeliczonaKwotaKredytuDoSplaty { get; private set; }
+        public string PrzeliczoneCalkowiteOdsetki { get; private set; }
 
         public Command NavigateBackCommand { get; }
 
@@ -79,9 +103,56 @@ namespace Otodom.Pages
             KwotaKredytuDoSplaty = RataMiesieczna * iloscRat;
             CalkowiteOdsetki = KwotaKredytuDoSplaty - kwotaPozyczki;
 
+            PrzeliczonaRataMiesieczna = $"{RataMiesieczna:N2} PLN";
+            PrzeliczonaKwotaKredytuDoSplaty = $"{KwotaKredytuDoSplaty:N2} PLN";
+            PrzeliczoneCalkowiteOdsetki = $"{CalkowiteOdsetki:N2} PLN";
+
             OnPropertyChanged(nameof(RataMiesieczna));
             OnPropertyChanged(nameof(KwotaKredytuDoSplaty));
             OnPropertyChanged(nameof(CalkowiteOdsetki));
+
+            OnPropertyChanged(nameof(PrzeliczonaRataMiesieczna));
+            OnPropertyChanged(nameof(PrzeliczonaKwotaKredytuDoSplaty));
+            OnPropertyChanged(nameof(PrzeliczoneCalkowiteOdsetki));
+        }
+
+        private async void ObliczPrzewalutowanie()
+        {
+            try
+            {
+                if (SelectedCurrency == "PLN")
+                {
+                    PrzeliczonaRataMiesieczna = $"{RataMiesieczna:N2} PLN";
+                    PrzeliczonaKwotaKredytuDoSplaty = $"{KwotaKredytuDoSplaty:N2} PLN";
+                    PrzeliczoneCalkowiteOdsetki = $"{CalkowiteOdsetki:N2} PLN";
+                }
+                else
+                {
+                    decimal exchangeRate = await GetExchangeRate(SelectedCurrency);
+
+                    PrzeliczonaRataMiesieczna = $"{(RataMiesieczna / exchangeRate):N2} {SelectedCurrency}";
+                    PrzeliczonaKwotaKredytuDoSplaty = $"{(KwotaKredytuDoSplaty / exchangeRate):N2} {SelectedCurrency}";
+                    PrzeliczoneCalkowiteOdsetki = $"{(CalkowiteOdsetki / exchangeRate):N2} {SelectedCurrency}";
+                }
+
+                OnPropertyChanged(nameof(PrzeliczonaRataMiesieczna));
+                OnPropertyChanged(nameof(PrzeliczonaKwotaKredytuDoSplaty));
+                OnPropertyChanged(nameof(PrzeliczoneCalkowiteOdsetki));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"B³¹d podczas przeliczania walut: {ex.Message}");
+            }
+        }
+
+        private async Task<decimal> GetExchangeRate(string currency)
+        {
+            if (currency == "PLN")
+                return 1m;
+
+            var response = await _httpClient.GetStringAsync($"https://api.nbp.pl/api/exchangerates/rates/a/{currency.ToLower()}/?format=json");
+            var json = JsonDocument.Parse(response);
+            return json.RootElement.GetProperty("rates")[0].GetProperty("mid").GetDecimal();
         }
     }
 }

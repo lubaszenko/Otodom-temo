@@ -24,47 +24,64 @@
 
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Spacing="30" Padding="10" Margin="0,140,0,0">
-
                 <Frame BackgroundColor="#E3F2FD"
-                       CornerRadius="10"
-                       Padding="15"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center">
+       CornerRadius="10"
+       Padding="15"
+       HorizontalOptions="Center"
+       VerticalOptions="Center"
+       IsVisible="{Binding IsNotLoggedIn}">
                     <StackLayout Spacing="10" HorizontalOptions="Center">
                         <Label Text="Zaloguj się lub załóż konto"
-                               FontSize="18"
-                               FontAttributes="Bold"
-                               TextColor="Black"
-                               HorizontalOptions="Center" />
+               FontSize="18"
+               FontAttributes="Bold"
+               TextColor="Black"
+               HorizontalOptions="Center" />
                         <Button Text="Zaloguj się"
-                                Command="{Binding NavigateToLoginCommand}"
-                                BackgroundColor="#64B5F6"
-                                TextColor="White"
-                                CornerRadius="5" />
+                Command="{Binding NavigateToLoginCommand}"
+                BackgroundColor="#64B5F6"
+                TextColor="White"
+                CornerRadius="5" />
                         <Button Text="Załóż konto"
-                                Command="{Binding NavigateToRegisterCommand}"
-                                BackgroundColor="#64B5F6"
-                                TextColor="White"
-                                CornerRadius="5" />
+                Command="{Binding NavigateToRegisterCommand}"
+                BackgroundColor="#64B5F6"
+                TextColor="White"
+                CornerRadius="5" />
                     </StackLayout>
                 </Frame>
 
                 <Frame BackgroundColor="White"
-                       CornerRadius="10"
-                       BorderColor="#E0E0E0"
-                       HasShadow="True"
-                       Padding="20"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center">
+       CornerRadius="10"
+       BorderColor="#E0E0E0"
+       HasShadow="True"
+       Padding="20"
+       HorizontalOptions="Center"
+       VerticalOptions="Center"
+       IsVisible="{Binding IsLoggedIn}">
                     <StackLayout>
-                        <Label Text="Dysponujemy największą bazą ogłoszeń nieruchomości w Polsce. Badamy preferencje, analizujemy dane i pomagamy zrozumieć rynek nieruchomości."
-                               FontSize="14"
-                               FontAttributes="Bold"
-                               TextColor="Black"
-                               HorizontalOptions="Start" />
+                        <Label Text="Sprzedaż własnego mieszkania?"
+               FontSize="18"
+               FontAttributes="Bold"
+               TextColor="Black"
+               Margin="0,0,0,10"
+               HorizontalOptions="Center" />
+                        <Label Text="Dodaj swoje ogłoszenie i dotrzyj do setek potencjalnych klientów. Nasza platforma ułatwi ci proces sprzedaży nieruchomości."
+               FontSize="14"
+               TextColor="Black"
+               HorizontalOptions="Start"
+               Margin="0,0,0,10" />
+                        <Button Text="Dodaj ogłoszenie"
+                Command="{Binding NavigateToAddAdvertisementCommand}"
+                BackgroundColor="#64B5F6"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="10"
+                Padding="15,10"
+                Margin="0,15,0,0"
+                HeightRequest="50"
+                HorizontalOptions="Center" />
                     </StackLayout>
                 </Frame>
-
+                <!-- Inne elementy -->
                 <Frame BackgroundColor="White"
                        CornerRadius="10"
                        BorderColor="#E0E0E0"
@@ -84,7 +101,7 @@
                                FontAttributes="Bold"
                                TextColor="Black"
                                HorizontalOptions="Start" />
-                        
+
                         <Button Text="Sprawdź mieszkania"
                                 Command="{Binding NavigateToAdvertisementCommand}"
                                 BackgroundColor="#64B5F6"
@@ -151,7 +168,7 @@
                                TextColor="Black"
                                HorizontalOptions="Start" />
 
-                        <Button Text="Oblisz swoją zdolność kredytową"
+                        <Button Text="Oblicz swoją zdolność kredytową"
                                 Command="{Binding NavigateToLoansCommand}"
                                 BackgroundColor="#64B5F6"
                                 TextColor="White"
@@ -163,63 +180,19 @@
                                 HorizontalOptions="Center" />
                     </StackLayout>
                 </Frame>
-
+                <!-- Kafelek Wyloguj się -->
                 <Frame BackgroundColor="White"
                        CornerRadius="10"
                        BorderColor="#E0E0E0"
                        HasShadow="True"
                        Padding="20"
                        HorizontalOptions="Center"
-                       VerticalOptions="Center">
-                    <StackLayout>
-                        <Label Text="Sprzedaż własnego mieszkania?"
-                                FontSize="18"
-                                FontAttributes="Bold"
-                                TextColor="Black"
-                                Margin="0,0,0,10"
-                                HorizontalOptions="Center" />
-                        <Label Text="Chcesz szybko i łatwo sprzedać swoje mieszkanie? Skorzystaj z naszej platformy, aby dodać ogłoszenie w kilku prostych krokach. Dzięki intuicyjnemu interfejsowi dotrzesz do szerokiego grona zainteresowanych klientów i zwiększysz szansę na szybkie znalezienie kupca."
-                                FontSize="14"
-                                FontAttributes="Bold"
-                                TextColor="Black"
-                                HorizontalOptions="Start" />
-
-                        <Button Text="Dodaj ogłoszenie"
-                                Command="{Binding NavigateToAddAdvertisementCommand}"
-                                BackgroundColor="#64B5F6"
-                                TextColor="White"
-                                FontAttributes="Bold"
-                                CornerRadius="10"
-                                Padding="15,10"
-                                Margin="0,15,0,0"
-                                HeightRequest="50"
-                                HorizontalOptions="Center" />
-                    </StackLayout>
-                </Frame>
-
-                <Frame BackgroundColor="White"
-                       CornerRadius="10"
-                       BorderColor="#E0E0E0"
-                       HasShadow="True"
-                       Padding="20"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center">
-                    <StackLayout>
-                        <Label Text="Kupno w innej walucie"
-                                FontSize="18"
-                                FontAttributes="Bold"
-                                TextColor="Black"
-                                Margin="0,0,0,10"
-                                HorizontalOptions="Center" />
-                        <Label Text="Planujesz zakup nieruchomości w innej walucie? Skorzystaj z naszego narzędzia, aby sprawdzić aktualne kursy wymiany walut i dokładnie zaplanować swoje wydatki. Bądź na bieżąco z najnowszymi kursami i podejmuj świadome decyzje finansowe."
-                                FontSize="14"
-                                FontAttributes="Bold"
-                                TextColor="Black"
-                                HorizontalOptions="Start" />
-
-                        <Button Text="Przejrzyj kursy walut"
-                                Command="{Binding NavigateToCurrenciesCommand}"
-                                BackgroundColor="#64B5F6"
+                       VerticalOptions="End"
+                       IsVisible="{Binding IsLoggedIn}">
+                    <StackLayout HorizontalOptions="Center">
+                        <Button Text="Wyloguj się"
+                                Command="{Binding LogoutCommand}"
+                                BackgroundColor="#F44336"
                                 TextColor="White"
                                 FontAttributes="Bold"
                                 CornerRadius="10"

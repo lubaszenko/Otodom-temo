@@ -33,9 +33,9 @@ namespace Otodom
 
             InitializeDatabase(dbPath);
 
+            builder.Services.AddSingleton<MainPageViewModel>(); // Singleton dla zarządzania stanem logowania
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<RegisterViewModel>();
-            builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<AgenciesViewModel>();
             builder.Services.AddTransient<CurrenciesViewModel>();
             builder.Services.AddTransient<AddAdvertisementViewModel>();
