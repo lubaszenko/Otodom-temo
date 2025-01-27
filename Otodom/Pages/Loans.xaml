@@ -12,7 +12,6 @@
                        FontAttributes="Bold"
                        HorizontalOptions="Center" />
 
-                <!-- Cena nieruchomości (PLN zawsze) -->
                 <VerticalStackLayout Spacing="10">
                     <Label Text="Cena nieruchomości:" />
                     <Slider Minimum="50000"
@@ -25,7 +24,6 @@
                            FontAttributes="Bold" />
                 </VerticalStackLayout>
 
-                <!-- Wkład własny -->
                 <VerticalStackLayout Spacing="10">
                     <Label Text="Wkład własny (%):" />
                     <Slider Minimum="10"
@@ -38,7 +36,6 @@
                            FontAttributes="Bold" />
                 </VerticalStackLayout>
 
-                <!-- Okres kredytowania -->
                 <VerticalStackLayout Spacing="10">
                     <Label Text="Okres kredytowania (lata):" />
                     <Slider Minimum="5"
@@ -51,7 +48,6 @@
                            FontAttributes="Bold" />
                 </VerticalStackLayout>
 
-                <!-- Oprocentowanie kredytu -->
                 <VerticalStackLayout Spacing="10">
                     <Label Text="Oprocentowanie kredytu (%):" />
                     <Slider Minimum="1"
@@ -64,14 +60,12 @@
                            FontAttributes="Bold" />
                 </VerticalStackLayout>
 
-                <!-- Wybór waluty -->
                 <VerticalStackLayout Spacing="10">
                     <Label Text="Wybierz walutę:" />
                     <Picker ItemsSource="{Binding Currencies}"
                             SelectedItem="{Binding SelectedCurrency}" />
                 </VerticalStackLayout>
 
-                <!-- Wyniki kalkulacji -->
                 <VerticalStackLayout Spacing="10">
                     <Label Text="Rata miesięczna:" FontAttributes="Bold" />
                     <Label Text="{Binding PrzeliczonaRataMiesieczna}" FontSize="18" />
@@ -83,7 +77,6 @@
                     <Label Text="{Binding PrzeliczoneCalkowiteOdsetki}" FontSize="18" />
                 </VerticalStackLayout>
 
-                <!-- Powrót -->
                 <Button Text="Powrót do strony głównej"
                         Command="{Binding NavigateBackCommand}"
                         BackgroundColor="#64B5F6"

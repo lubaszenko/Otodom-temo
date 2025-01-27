@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Otodom.Models.ViewModels
@@ -8,14 +7,16 @@ namespace Otodom.Models.ViewModels
     public partial class MainPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private bool isLoggedIn; // Automatycznie obsługuje powiadomienia o zmianach
+        private bool isLoggedIn; 
 
-        // Właściwość do odczytu i zapisu z powiadamianiem o zmianach
         private bool _isNotLoggedIn;
+
+        public int loggedUserId;
+
         public bool IsNotLoggedIn
         {
             get => _isNotLoggedIn;
-            set => SetProperty(ref _isNotLoggedIn, value); // Powiadamianie o zmianie
+            set => SetProperty(ref _isNotLoggedIn, value);
         }
 
         public ICommand NavigateToLoginCommand { get; }
@@ -38,17 +39,13 @@ namespace Otodom.Models.ViewModels
             NavigateToCurrenciesCommand = new AsyncRelayCommand(NavigateToCurrenciesAsync);
             LogoutCommand = new RelayCommand(Logout);
 
-            // Domyślne wartości
             IsLoggedIn = false;
             IsNotLoggedIn = true;
         }
 
         private async Task NavigateToLoginAsync()
         {
-            // Przejście do strony logowania
-            await Shell.Current.GoToAsync("//LoginPage");
-
-           
+            await Shell.Current.GoToAsync("//LoginPage");  
         }
 
         private async Task NavigateToRegisterAsync()
@@ -91,7 +88,8 @@ namespace Otodom.Models.ViewModels
         private void Logout()
         {
             IsLoggedIn = false;
-            IsNotLoggedIn = true; // Ręczna aktualizacja
+            IsNotLoggedIn = true;
+            loggedUserId = 0;
         }
     }
 }

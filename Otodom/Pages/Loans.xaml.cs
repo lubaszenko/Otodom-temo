@@ -74,9 +74,9 @@ namespace Otodom.Pages
 
         public ObservableCollection<string> Currencies { get; } = new ObservableCollection<string> { "PLN", "EUR", "USD" };
 
-        public decimal RataMiesieczna { get; private set; } // Dodano brakuj¹c¹ w³aœciwoœæ
-        public decimal KwotaKredytuDoSplaty { get; private set; } // Dodano brakuj¹c¹ w³aœciwoœæ
-        public decimal CalkowiteOdsetki { get; private set; } // Dodano brakuj¹c¹ w³aœciwoœæ
+        public decimal RataMiesieczna { get; private set; } 
+        public decimal KwotaKredytuDoSplaty { get; private set; } 
+        public decimal CalkowiteOdsetki { get; private set; } 
 
         public string PrzeliczonaRataMiesieczna { get; private set; }
         public string PrzeliczonaKwotaKredytuDoSplaty { get; private set; }

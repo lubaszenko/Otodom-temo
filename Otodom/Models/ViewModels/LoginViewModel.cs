@@ -17,6 +17,7 @@ namespace Otodom.ViewModels
         private string password;
 
         private readonly AppDbContext _dbContext;
+
         private readonly MainPageViewModel _mainPageViewModel;
 
         public ICommand LoginCommand { get; }
@@ -46,15 +47,10 @@ namespace Otodom.ViewModels
                 return;
             }
 
-            // Ustawiamy zalogowanie
             Console.WriteLine("Ustawiam IsLoggedIn na true");
             _mainPageViewModel.IsLoggedIn = true;
             _mainPageViewModel.IsNotLoggedIn = false;
-
-
-
-
-
+            _mainPageViewModel.loggedUserId = user.Id;
             await App.Current.MainPage.DisplayAlert("Sukces", "Zalogowano pomyślnie", "OK");
             await Shell.Current.GoToAsync("//MainPage");
         }

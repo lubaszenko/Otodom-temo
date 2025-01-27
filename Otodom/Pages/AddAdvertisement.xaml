@@ -2,105 +2,50 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Otodom.Models.ViewModels"
+             xmlns:nm="clr-namespace:ApiConsumer.DTO;assembly=ApiConsumer"
              x:Class="Otodom.Pages.AddAdvertisement"
              x:DataType="vm:AddAdvertisementViewModel"
              Title="Dodaj ogłoszenie">
 
     <ScrollView VerticalOptions="FillAndExpand">
         <VerticalStackLayout Spacing="20" Padding="10">
-            <!-- Nagłówek formularza -->
-            <Label Text="Wprowadź szczegółowe informacje:"
-               FontSize="22"
-               FontAttributes="Bold"
-               HorizontalOptions="Center" />
 
-            <!-- Tytuł -->
+            <Label Text="Wprowadź szczegółowe informacje:"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
             <VerticalStackLayout Spacing="10">
                 <Label Text="Tytuł:" />
                 <Entry Placeholder="Wprowadź tytuł"
-                   Text="{}" />
+                       Text="{Binding AdvertisementRequest.Tytul}" />
             </VerticalStackLayout>
 
-            <!-- Opis -->
             <VerticalStackLayout Spacing="10">
                 <Label Text="Opis:" />
                 <Editor Placeholder="Wprowadź opis"
-                    Text="{}"
+                    Text="{Binding AdvertisementRequest.Opis}"
                     AutoSize="TextChanges" />
             </VerticalStackLayout>
 
-            <!-- Cena -->
             <VerticalStackLayout Spacing="10">
                 <Label Text="Cena:" />
                 <Entry Placeholder="Wprowadź cenę"
-                   Text="{}"
-                   Keyboard="Numeric" />
+                       Text="{Binding AdvertisementRequest.Cena}"
+                       Keyboard="Numeric" />
             </VerticalStackLayout>
 
-            <!-- Klient -->
             <VerticalStackLayout Spacing="10">
-                <Label Text="Klient (ID):" />
-                <Entry Placeholder="Wprowadź ID klienta"
-                   Text="{}"
-                   Keyboard="Numeric" />
+                <Label Text="ID mieszkania:" />
+                <Entry Placeholder="Wprowadź ID"
+                       Text="{Binding AdvertisementRequest.NieruchomoscIdNieruchomosci}"
+                       Keyboard="Numeric" />
             </VerticalStackLayout>
 
-            <!-- Województwo -->
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Województwo:" />
-                <Entry Placeholder="Wprowadź województwo"
-                   Text="{}" />
-            </VerticalStackLayout>
-
-            <!-- Miasto -->
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Miasto:" />
-                <Entry Placeholder="Wprowadź miasto"
-                   Text="{}" />
-            </VerticalStackLayout>
-
-            <!-- Kod pocztowy -->
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Kod pocztowy:" />
-                <Entry Placeholder="Wprowadź kod pocztowy"
-                   Text="{}"
-                   Keyboard="Numeric" />
-            </VerticalStackLayout>
-
-            <!-- Ulica -->
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Ulica:" />
-                <Entry Placeholder="Wprowadź ulicę"
-                   Text="{}" />
-            </VerticalStackLayout>
-
-            <!-- Numer domu -->
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Numer domu:" />
-                <Entry Placeholder="Wprowadź numer domu"
-                   Text="{}"
-                   Keyboard="Numeric" />
-            </VerticalStackLayout>
-
-            <!-- Powierzchnia domu -->
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Powierzchnia domu:" />
-                <Entry Placeholder="Wprowadź powierzchnię"
-                   Text="{}"
-                   Keyboard="Numeric" />
-            </VerticalStackLayout>
-
-            <!-- Zdjęcia -->
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Zdjęcia (URL):" />
-                <Entry Text="{}" Placeholder="Wprowadź URL zdjęcia" />
-                <Button Text="Dodaj zdjęcie" />
-            </VerticalStackLayout>
-
-            <!-- Przycisk dodawania ogłoszenia -->
             <Button Text="Dodaj ogłoszenie"
-                BackgroundColor="Blue"
-                TextColor="White" />
+                    Command="{Binding AddAdvertisement}"
+                    BackgroundColor="#64B5F6"
+                    TextColor="White" />
 
             <Button Text="Powrót do strony głównej"
                         Command="{Binding NavigateBackCommand}"

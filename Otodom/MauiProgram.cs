@@ -1,10 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
-using ApiConsumer.IoC;
-using Otodom.Models;
+﻿using Otodom.Models;
 using Otodom.ViewModels;
 using Otodom.Pages;
 using Otodom.Models.ViewModels;
+using ApiConsumer.IoC;
+using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace Otodom
 {
@@ -33,16 +33,16 @@ namespace Otodom
 
             InitializeDatabase(dbPath);
 
-            builder.Services.AddSingleton<MainPageViewModel>(); // Singleton dla zarządzania stanem logowania
+            builder.Services.AddSingleton<MainPageViewModel>();
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<RegisterViewModel>();
             builder.Services.AddTransient<AgenciesViewModel>();
             builder.Services.AddTransient<CurrenciesViewModel>();
-            builder.Services.AddTransient<AddAdvertisementViewModel>();
-            builder.Services.AddTransient<DisplayAdvertisementViewModel>();
+            builder.Services.AddSingleton<AddAdvertisementViewModel>();
+            builder.Services.AddSingleton<DisplayAdvertisementViewModel>();
 
-            builder.Services.AddTransient<AddAdvertisement>();
-            builder.Services.AddTransient<Advertisement>();
+            builder.Services.AddSingleton<AddAdvertisement>();
+            builder.Services.AddSingleton<Advertisement>();
             builder.Services.AddTransient<Agencies>();
             builder.Services.AddTransient<Currencies>();
             builder.Services.AddTransient<Loans>();

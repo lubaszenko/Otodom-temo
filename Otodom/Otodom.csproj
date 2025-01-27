@@ -79,6 +79,9 @@
 	  <Compile Update="Pages\Agencies.xaml.cs">
 	    <DependentUpon>Agencies.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\Currencies.xaml.cs">
+	    <DependentUpon>Currencies.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\Loans.xaml.cs">
 	    <DependentUpon>Loans.xaml</DependentUpon>
 	  </Compile>

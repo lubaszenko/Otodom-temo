@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:Otodom.Models.ViewModels"
              x:Class="Otodom.Pages.Currencies"
              x:DataType="vm:CurrenciesViewModel"
-             Title="Kursy walut">
+             Title="Pobieranie lokalizacji">
 
     <ScrollView>
         <StackLayout Padding="20" Spacing="20">
